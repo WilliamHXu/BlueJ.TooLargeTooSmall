@@ -2,9 +2,12 @@
 /**
  * Write a description of class Main here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Will Xu
+ * @version 2/5/18
  */
+
+import java.util.Scanner;
+
 public class Main
 {
     // instance variables - replace the example below with your own
@@ -16,8 +19,30 @@ public class Main
     public Main()
     {
         // initialise instance variables
-        x = 0;
+        Scanner scanner = new Scanner(System.in);
+        int answer = randomNumberGen();
+        int guess = 1001;
+        int lastGuess = 1001;
+        int nog = 0;
+        System.out.println("Welcome to Will's Guessing Game");
+        System.out.println("Please Make a Guess Between 1 and 1000 Inclusive");
+        while (answer != guess) {
+            lastGuess = guess;
+            guess = scanner.nextInt();
+            if (guess == lastGuess) {nog--;}
+            if (guess > answer) {
+                System.out.println("Too High You Fool, You Want to Kill Us?");
+            }
+            if (guess < answer) {
+                System.out.println("Too Low! Are You Afraid to Guess High or What?");
+            }
+            if (guess == answer) {
+                System.out.println("Crap.... Fine You Got It... Congrats I Guess.");
+            }
+            nog++;
     }
+    System.out.println("You Guessed It Right in " + nog + " times!");
+}
 
     /**
      * An example of a method - replace this comment with your own
@@ -25,9 +50,9 @@ public class Main
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public Integer randomNumberGen() {
+        int x = (int) Math.ceil(Math.random() * 1000);
+        return x;
     }
 }
